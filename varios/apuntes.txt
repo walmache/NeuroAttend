@@ -1,0 +1,26 @@
+docker pull postgres:15
+
+docker run --name neuroattend-db \
+  -e POSTGRES_USER=neurouser \
+  -e POSTGRES_PASSWORD=Rtl8139$ \
+  -e POSTGRES_DB=neuroattend \
+  -p 5433:5432 \
+  -d postgres:15
+
+
+flask db init
+flask db migrate -m "Crear tablas iniciales"
+flask db upgrade
+
+python Backend/seed.py
+
+sudo systemctl enable postgresql
+sudo lsof -i :5432
+
+
+curl -X GET -i http://localhost:5000/api/clientes/
+
+docker system prune -a --volumes
+
+ng new FrontEnd
+

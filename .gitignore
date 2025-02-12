@@ -1,0 +1,30 @@
+# Angular
+/node_modules
+/dist
+/.angular
+/.cache
+/.vscode
+/.idea
+*.log
+*.tmp
+*.pid
+
+# Flask
+/venv/
+/env/
+/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+/instance/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno (no subir credenciales)
+.env
+*.env
