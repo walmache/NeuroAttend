@@ -1,18 +1,18 @@
 # Angular
-/node_modules
-/dist
-/.angular/cache
-/.cache
-/out-tsc
-/tmp
-/bazel-out
+node_modules/*
+dist
+.angular/cache
+.cache
+out-tsc
+tmp
+bazel-out
 npm-debug.log
 yarn-error.log
 
 # Flask
-/venv/
-/env/
-/__pycache__/
+venv/
+env/
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
@@ -60,4 +60,4 @@ testem.log
 
 # Archivos específicos del proyecto
 versionesPrevias.zip
-/varios
+varios/*
