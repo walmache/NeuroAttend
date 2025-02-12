@@ -17,4 +17,5 @@ COPY . .
 EXPOSE 4200
 
 # Comando para iniciar la aplicación
-CMD ["npm", "start"]
+#CMD ["npm", "start"]
+CMD ["npm", "start", "--", "--host", "0.0.0.0", "--port", "4200", "--disable-host-check"]

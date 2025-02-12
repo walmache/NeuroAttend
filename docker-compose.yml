@@ -42,17 +42,17 @@ services:
       command: >
     #sh -c "sleep 10 && flask db upgrade && python seed.py && flask run --host=0.0.0.0"
     
-  # frontend:
-  #   build: ./Frontend
-  #   container_name: neuroattend-frontend
-  #   ports:
-  #     - "4200:4200"
-  #   volumes:
-  #     - ./Frontend:/app
-  #   networks:
-  #     - neuroattend_network
-  #   command: >
-  #     sh -c "npm install && npm start"
+  frontend:
+    build: ./Frontend
+    container_name: neuroattend-frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./Frontend:/app
+    networks:
+      - neuroattend_network
+    command: >
+      sh -c "npm install && npm start -- --host 0.0.0.0 --port 4200 --disable-host-check"
 
 volumes:
   neuroattend-db-data:
