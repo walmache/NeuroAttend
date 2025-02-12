@@ -1,7 +1,7 @@
 # Angular
 node_modules/*
 dist
-.angular/cache
+.angular/*
 .cache
 out-tsc
 tmp
