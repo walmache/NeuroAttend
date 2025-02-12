@@ -1,13 +1,13 @@
 # Angular
 /node_modules
 /dist
-/.angular
+/.angular/cache
 /.cache
-/.vscode
-/.idea
-*.log
-*.tmp
-*.pid
+/out-tsc
+/tmp
+/bazel-out
+npm-debug.log
+yarn-error.log
 
 # Flask
 /venv/
@@ -18,13 +18,45 @@
 *.pyd
 *.db
 *.sqlite3
-*.log
 /instance/
+
+# Archivos de entorno (no subir credenciales)
+.env
+*.env
 
 # Archivos del sistema
 .DS_Store
 Thumbs.db
 
-# Archivos de entorno (no subir credenciales)
-.env
-*.env
+# IDEs y editores
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Misceláneos
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# Archivos temporales y logs
+*.log
+*.tmp
+*.pid
+
+# Archivos específicos del proyecto
+versionesPrevias.zip
