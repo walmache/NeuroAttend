@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    container_name: neuroattend-db
+    env_file:
+      - .env
+    ports:
+      - "5433:5432"
+    volumes:
+      - neuroattend-db-data:/var/lib/postgresql/data
+      - ./Backend/seed.py:/docker-entrypoint-initdb.d/seed.py  # Montar el script seed.py
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    networks:
+      - neuroattend_network
+
+  backend:
+    build: ./Backend
+    container_name: neuroattend-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./Backend:/app
+    networks:
+      - neuroattend_network
+    command: >
+      sh -c "flask db upgrade && python seed.py && flask run --host=0.0.0.0"
+      command: >
+    #sh -c "sleep 10 && flask db upgrade && python seed.py && flask run --host=0.0.0.0"
+
+volumes:
+  neuroattend-db-data:
+
+networks:
+  neuroattend_network:
