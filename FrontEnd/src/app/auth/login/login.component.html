@@ -1,0 +1,34 @@
+<div class="login-box">
+    <div class="login-logo">
+      <a href="#"><b>Admin</b>LTE</a>
+    </div>
+  
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Iniciar sesión</p>
+  
+        <form (ngSubmit)="onSubmit()">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Nombre de usuario" [(ngModel)]="username" name="username" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
