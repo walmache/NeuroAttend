@@ -1,28 +1,54 @@
-.login-box {
-    max-width: 1000px; /* Ancho máximo de la caja */
+/* Estilos para el fondo dividido */
+  .background-sections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca el fondo detrás del contenido */
+  }
+  
+  .top-section {
+    height: 50vh; /* Mitad de la pantalla */
+    background-color: #007bff; /* Color azul */
+  }
+  
+  .bottom-section {
+    height: 50vh; /* Mitad de la pantalla */
+    background-color: #c3c3f0; /* Color gris claro */
+  }
+  
+  /* Estilos adicionales para el contenedor del login */
+  .login-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-box {
+    z-index: 1; /* Asegura que el login-box esté por encima del fondo */
+    max-width: 700px; /* Ancho máximo del contenedor */
     width: 100%;
   }
-  
+
+  /* Estilos para el formulario de login */
   .login-form {
-    width: 50%; /* Ancho del formulario */
+    min-width: 300px; /* Ancho mínimo del formulario */
   }
   
+  /* Estilos para el mensaje de bienvenida */
   .welcome-message {
-    width: 50%; /* Ancho del mensaje de bienvenida */
+    min-width: 300px; /* Ancho mínimo de la sección de bienvenida */
   }
   
   /* Responsive Design */
   @media (max-width: 768px) {
     .login-box {
-      flex-direction: column;
+      flex-direction: column; /* Apila las secciones en pantallas pequeñas */
     }
   
     .login-form, .welcome-message {
-      width: 100%;
-    }
-  
-    .welcome-message {
-      text-align: center;
-      padding-top: 80px; /* Espacio para el logo */
+      width: 100%; /* Ocupa el 100% del ancho en pantallas pequeñas */
     }
   }

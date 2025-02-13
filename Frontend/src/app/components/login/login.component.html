@@ -1,5 +1,12 @@
-<div class="login-container d-flex justify-content-center align-items-center vh-100">
-  <div class="login-box d-flex rounded shadow overflow-hidden">
+<div class="login-container vh-100 position-relative">
+  <!-- Fondo Dividido en Colores -->
+  <div class="background-sections">
+    <div class="top-section bg-primary"></div> <!-- Sección Superior: Color Azul -->
+    <div class="bottom-section bg-light"></div> <!-- Sección Inferior: Color Gris Claro -->
+  </div>
+
+  <!-- Contenedor del Login -->
+  <div class="login-box d-flex rounded shadow overflow-hidden position-relative border border-info" >
     <!-- Sección del Formulario -->
     <div class="login-form p-5 bg-white">
       <h2 class="mb-4 text-center">Iniciar Sesión</h2>
@@ -26,7 +33,7 @@
     <!-- Sección del Logo y Mensaje de Bienvenida -->
     <div class="welcome-message p-5 text-white position-relative" style="background-color: #c1d3e7;">
       <div class="logo-section position-absolute top-0 start-50 translate-middle-x mt-4">
-        <img src="assets/neurotech.png" alt="Neurotech S.A." class="logo" style="max-width: 100px;" />
+        <img src="assets/logos/neurotech.svg" alt="Neurotech S.A." class="logo" style="max-width: 100px;" />
       </div>
       <h2 class="mt-5">Revisa el Progreso de tu Proyecto</h2>
       <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique urna lorem sed pellentesque doloremque sit amet ipsum.</p>
