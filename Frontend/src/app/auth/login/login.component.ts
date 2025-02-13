@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';  // Importamos el servicio de autenticación
+import { AuthService } from '../../services/auth.service';  // Importamos el servicio de autenticación
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-login',
   standalone: true,
+  imports: [
+    FormsModule,  // Aseguramos que FormsModule esté importado para usar ngModel
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
