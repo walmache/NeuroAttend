@@ -1,0 +1,29 @@
+/* Asegura que el formulario de login esté centrado */
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .login-box {
+    width: 360px;
+    margin: 7% auto;
+  }
+  
+  .card {
+    border-radius: 10px; /* Opcional: para redondear los bordes */
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  .input-group-text {
+    display: flex;
+    align-items: center; /* Centra el icono verticalmente */
+    justify-content: center; /* Centra el icono horizontalmente */
+  }
+  
+  .input-group-prepend .input-group-text i {
+    font-size: 18px; /* Ajusta el tamaño del icono */
+  }
+  
+  

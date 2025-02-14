@@ -1,1 +1,29 @@
-<p>dashboard works!</p>
+<!-- Sidebar -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="#" class="brand-link">
+    <span class="brand-text font-weight-light">AdminLTE</span>
+  </a>
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+        <!-- Organizaciones -->
+        <li class="nav-item" *ngIf="isAdmin">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>Organizaciones</p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Nueva</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <!-- El resto del menú... -->
+      </ul>
+    </nav>
+  </div>
+</aside>

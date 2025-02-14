@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';  // Asegúrate de que el servicio esté bien importado
+import { AuthService } from '../../shared/services/auth.service';
 import { FormsModule } from '@angular/forms';  // Importamos FormsModule
+import { NotificationService } from '../../shared/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -14,46 +15,48 @@ import { FormsModule } from '@angular/forms';  // Importamos FormsModule
 })
 export class LoginComponent {
   
-  username: string = '';
+  usuario: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationService: NotificationService  // Inyectar el servicio
+  ) {}
 
   onSubmit() {
-    // Log para verificar que los datos se están enviando
-    console.log('Iniciando sesión con los siguientes datos:', this.username, this.password);
-
-    // Llamamos al servicio para hacer login
-    this.authService.login(this.username, this.password).subscribe(
+    console.log('Iniciando sesión con los siguientes datos:', this.usuario, this.password);
+    this.authService.login(this.usuario, this.password).subscribe(
       (response) => {
-        // Log para verificar la respuesta de la API
         console.log('Respuesta de la API:', response);
-
         if (response && response.token) {
           const token = response.token;
           localStorage.setItem('token', token);  // Guardamos el token en localStorage
           console.log('Token guardado en localStorage:', token);
-
-          // Decodificamos el token (suponiendo que contiene el rol)
           const decodedToken = this.decodeToken(token);
           console.log('Token decodificado:', decodedToken);
-
-          // Redirigir según el rol del usuario
-          if (decodedToken.role === 'admin' || decodedToken.role === 'moderator') {
+          if (decodedToken.rol === 'administrador' || decodedToken.rol === 'moderador') {
             this.router.navigate(['/management/dashboard']);
-            console.log('Redirigiendo a Dashboard...');
+            this.notificationService.showMessage('success','Bienvenido al Dashboard');
           } else {
             this.router.navigate(['/management/welcome']);
-            console.log('Redirigiendo a la pantalla de bienvenida...');
+            this.notificationService.showMessage('success','Bienvenido');
           }
         } else {
-          console.error('Respuesta sin token:', response);
+          this.notificationService.showMessage('error','Respuesta sin token');
         }
       },
-      (error) => {
-        // Log para verificar el error
-        console.error('Error al iniciar sesión:', error);
+      (error) => { 
+        console.error('Error al hacer la solicitud HTTP:', error);
+        let errorMessage = 'Error desconocido';
+        if (error.status === 401) {
+          errorMessage = 'Credenciales incorrectas';
+        } else if (error.error && error.error.message) {
+          errorMessage = error.error.message;
+        }
+        this.notificationService.showMessage('error',errorMessage);
       }
+      
     );
   }
 
